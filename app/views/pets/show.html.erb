@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pet.name %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @pet.room %>
+</p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @pet.species %>
+</p>
+
+<p>
+	<%= image_tag @pet.image.url, alt: @pet.name %>
+	<%= link_to "Remove Image", remove_image_path(id: @pet.id), class: "btn btn-danger" %>
+</p>
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>

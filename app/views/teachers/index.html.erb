@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Our Teachers</h1>
+
+<p>
+  <%= link_to 'New Teacher', new_teacher_path, class: "btn btn-success" %>
+</p>
+
+<div class="row">
+  <% @teachers.each do |teacher| %>
+    <div class="col-md-4">
+      <div class="well center-it">
+        <h3><%= link_to teacher.name, teacher %></h3>
+        <p><em>teaches</em> <strong><%= teacher.grade_level.ordinalize %></strong> <em>grade</em></p>
+        <p><em>in Room #<%= teacher.room %></em></p>
+        <p>
+          <%= link_to 'Edit', edit_teacher_path(teacher), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

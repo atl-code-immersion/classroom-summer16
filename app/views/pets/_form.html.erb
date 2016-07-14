@@ -1,0 +1,33 @@
+<%= form_for(@pet) do |f| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% @pet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.number_field :room, placeholder: "Room #", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :species, placeholder: "Species", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <strong>Pet Image:</strong> 
+    <%= image_tag @pet.image.thumb.url if @pet.image? %><br />
+    <%= f.file_field :image %><br />
+  </div>
+    
+  </p>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

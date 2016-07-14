@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Our Students</h1>
+
+<p>
+  <%= link_to 'New Student', new_student_path, class: "btn btn-success" %>
+</p>
+
+<div class="row">
+  <% @students.each do |student| %>
+    <div class="col-md-3">
+      <div class="well center-it">
+        <h3>
+          <%= link_to "#{student.first_name} #{student.last_name}", student %>
+        </h3>
+        <p><em>is in</em> <strong><%= student.grade_level.ordinalize %></strong> <em>grade</em></p>
+        <p><em>and they're getting <% if student.grade_check %>an<%else%>a<%end%></em> <strong><%= student.letter_grade %></strong></p>
+        <p>
+          <%= link_to 'Edit', edit_student_path(student) %>
+          <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
